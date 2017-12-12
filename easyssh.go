@@ -135,7 +135,7 @@ func (ssh_conf *MakeConfig) Connect() (*ssh.Session, error) {
 		if err != nil {
 			return nil, err
 		}
-
+		targetConfig.Ciphers=append(targetConfig.Ciphers,"aes128-cbc")
 		ncc, chans, reqs, err := ssh.NewClientConn(conn, net.JoinHostPort(ssh_conf.Server, ssh_conf.Port), targetConfig)
 		if err != nil {
 			return nil, err
